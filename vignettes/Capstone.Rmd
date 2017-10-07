@@ -1,0 +1,48 @@
+---
+title: "Capstone"
+author: "Mike McCendon"
+date: "`2017-10-7"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Capstone}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+This package is intended to read in and visualize data from the U.S. National Oceanographic and Atmospheric Administration (NOAA) dataset on significant earthquakes
+around the world https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1. Below are the four functions this package exports.
+
+## eq_clean_data
+
+This function cleans the raw NOAA data setting the various fields to the appropriate 
+data types
+
+```{r}
+eq_clean_data('../R/signif.txt')
+```
+
+## eq_loc_helper
+
+This is a helper function used in cleaning the data that is primarily relevant for 
+removing colons, ":",  from the LOCATION_NAME field
+
+```{r}
+eq_loc_helper("co:lon")
+```
+
+## eq_location_clean
+
+This function cleans the LOCATION_NAME field by placing it in the proper casing and using
+the "eq_loc_helper" function to remove colons. It takes a dataframe and returns a cleaned one. For a completely clean NOAA data it must be used in conjunction with eq_clean_data
+
+```{r}
+eq_location_clean(eq_clean_data('../R/signif.txt'))
+```
+
+## geom_timeline
+
+This function creates a new geom to create a timeline for a specified data range
+and plots each earthquake as a point on that timline
+
+```{r}
+ggplot(data = filter(eq_location_clean(eq_clean_data('../R/signif.txt')), COUNTRY == "GERMANY"), aes(x = date, y = COUNTRY, color = DEATHS, size = EQ_PRIMARY)) + geom_timeline(alpha = 0.2)
+```

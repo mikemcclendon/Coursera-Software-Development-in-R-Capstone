@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Mike McCendon" />
+
+
+<title>Capstone</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Capstone</h1>
+<h4 class="author"><em>Mike McCendon</em></h4>
+<h4 class="date"><em>`2017-10-7</em></h4>
+
+
+
+<p>This package is intended to read in and visualize data from the U.S. National Oceanographic and Atmospheric Administration (NOAA) dataset on significant earthquakes around the world <a href="https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&amp;s=1&amp;d=1" class="uri">https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&amp;s=1&amp;d=1</a>. Below are the four functions this package exports.</p>
+<div id="eq_clean_data" class="section level2">
+<h2>eq_clean_data</h2>
+<p>This function cleans the raw NOAA data setting the various fields to the appropriate data types</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">eq_clean_data</span>(<span class="st">'../R/signif.txt'</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_integer(),
+##   FLAG_TSUNAMI = col_character(),
+##   SECOND = col_character(),
+##   EQ_PRIMARY = col_double(),
+##   EQ_MAG_MW = col_double(),
+##   EQ_MAG_MS = col_double(),
+##   EQ_MAG_MB = col_character(),
+##   EQ_MAG_ML = col_double(),
+##   EQ_MAG_MFA = col_character(),
+##   EQ_MAG_UNK = col_double(),
+##   COUNTRY = col_character(),
+##   STATE = col_character(),
+##   LOCATION_NAME = col_character(),
+##   LATITUDE = col_double(),
+##   LONGITUDE = col_double(),
+##   MISSING = col_character(),
+##   DAMAGE_MILLIONS_DOLLARS = col_character(),
+##   TOTAL_MISSING = col_character(),
+##   TOTAL_MISSING_DESCRIPTION = col_character(),
+##   TOTAL_DAMAGE_MILLIONS_DOLLARS = col_character()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre><code>## Warning: 669 failed to parse.</code></pre>
+<pre><code>## Warning in eval(substitute(expr), envir, enclos): NAs introduced by
+## coercion
+
+## Warning in eval(substitute(expr), envir, enclos): NAs introduced by
+## coercion</code></pre>
+<pre><code>## # A tibble: 5,956 x 45
+##      I_D FLAG_TSUNAMI   date  HOUR MINUTE SECOND FOCAL_DEPTH EQ_PRIMARY
+##    &lt;int&gt;        &lt;chr&gt; &lt;date&gt; &lt;int&gt;  &lt;int&gt;  &lt;chr&gt;       &lt;int&gt;      &lt;dbl&gt;
+##  1     1         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA        7.3
+##  2     3         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          18        7.1
+##  3     2          Tsu     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  4  5877          Tsu     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  5     8         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  6    11         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  7  9712          Tsu     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  8    12         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA        6.5
+##  9    13         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA        6.2
+## 10    14         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA         NA
+## # ... with 5,946 more rows, and 37 more variables: EQ_MAG_MW &lt;dbl&gt;,
+## #   EQ_MAG_MS &lt;dbl&gt;, EQ_MAG_MB &lt;chr&gt;, EQ_MAG_ML &lt;dbl&gt;, EQ_MAG_MFA &lt;chr&gt;,
+## #   EQ_MAG_UNK &lt;dbl&gt;, INTENSITY &lt;int&gt;, COUNTRY &lt;chr&gt;, STATE &lt;chr&gt;,
+## #   LOCATION_NAME &lt;chr&gt;, LATITUDE &lt;dbl&gt;, LONGITUDE &lt;dbl&gt;,
+## #   REGION_CODE &lt;int&gt;, DEATHS &lt;int&gt;, DEATHS_DESCRIPTION &lt;int&gt;,
+## #   MISSING &lt;chr&gt;, MISSING_DESCRIPTION &lt;int&gt;, INJURIES &lt;int&gt;,
+## #   INJURIES_DESCRIPTION &lt;int&gt;, DAMAGE_MILLIONS_DOLLARS &lt;chr&gt;,
+## #   DAMAGE_DESCRIPTION &lt;int&gt;, HOUSES_DESTROYED &lt;int&gt;,
+## #   HOUSES_DESTROYED_DESCRIPTION &lt;int&gt;, HOUSES_DAMAGED &lt;int&gt;,
+## #   HOUSES_DAMAGED_DESCRIPTION &lt;int&gt;, TOTAL_DEATHS &lt;int&gt;,
+## #   TOTAL_DEATHS_DESCRIPTION &lt;int&gt;, TOTAL_MISSING &lt;chr&gt;,
+## #   TOTAL_MISSING_DESCRIPTION &lt;chr&gt;, TOTAL_INJURIES &lt;int&gt;,
+## #   TOTAL_INJURIES_DESCRIPTION &lt;int&gt;, TOTAL_DAMAGE_MILLIONS_DOLLARS &lt;chr&gt;,
+## #   TOTAL_DAMAGE_DESCRIPTION &lt;int&gt;, TOTAL_HOUSES_DESTROYED &lt;int&gt;,
+## #   TOTAL_HOUSES_DESTROYED_DESCRIPTION &lt;int&gt;, TOTAL_HOUSES_DAMAGED &lt;int&gt;,
+## #   TOTAL_HOUSES_DAMAGED_DESCRIPTION &lt;int&gt;</code></pre>
+</div>
+<div id="eq_loc_helper" class="section level2">
+<h2>eq_loc_helper</h2>
+<p>This is a helper function used in cleaning the data that is primarily relevant for removing colons, “:”, from the LOCATION_NAME field</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">eq_loc_helper</span>(<span class="st">&quot;co:lon&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;lon&quot;</code></pre>
+</div>
+<div id="eq_location_clean" class="section level2">
+<h2>eq_location_clean</h2>
+<p>This function cleans the LOCATION_NAME field by placing it in the proper casing and using the “eq_loc_helper” function to remove colons. It takes a dataframe and returns a cleaned one. For a completely clean NOAA data it must be used in conjunction with eq_clean_data</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">eq_location_clean</span>(<span class="kw">eq_clean_data</span>(<span class="st">'../R/signif.txt'</span>))</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_integer(),
+##   FLAG_TSUNAMI = col_character(),
+##   SECOND = col_character(),
+##   EQ_PRIMARY = col_double(),
+##   EQ_MAG_MW = col_double(),
+##   EQ_MAG_MS = col_double(),
+##   EQ_MAG_MB = col_character(),
+##   EQ_MAG_ML = col_double(),
+##   EQ_MAG_MFA = col_character(),
+##   EQ_MAG_UNK = col_double(),
+##   COUNTRY = col_character(),
+##   STATE = col_character(),
+##   LOCATION_NAME = col_character(),
+##   LATITUDE = col_double(),
+##   LONGITUDE = col_double(),
+##   MISSING = col_character(),
+##   DAMAGE_MILLIONS_DOLLARS = col_character(),
+##   TOTAL_MISSING = col_character(),
+##   TOTAL_MISSING_DESCRIPTION = col_character(),
+##   TOTAL_DAMAGE_MILLIONS_DOLLARS = col_character()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre><code>## Warning: 669 failed to parse.</code></pre>
+<pre><code>## Warning in eval(substitute(expr), envir, enclos): NAs introduced by
+## coercion
+
+## Warning in eval(substitute(expr), envir, enclos): NAs introduced by
+## coercion</code></pre>
+<pre><code>## # A tibble: 5,956 x 45
+##      I_D FLAG_TSUNAMI   date  HOUR MINUTE SECOND FOCAL_DEPTH EQ_PRIMARY
+##    &lt;int&gt;        &lt;chr&gt; &lt;date&gt; &lt;int&gt;  &lt;int&gt;  &lt;chr&gt;       &lt;int&gt;      &lt;dbl&gt;
+##  1     1         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA        7.3
+##  2     3         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          18        7.1
+##  3     2          Tsu     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  4  5877          Tsu     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  5     8         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  6    11         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  7  9712          Tsu     NA    NA     NA   &lt;NA&gt;          NA         NA
+##  8    12         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA        6.5
+##  9    13         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA        6.2
+## 10    14         &lt;NA&gt;     NA    NA     NA   &lt;NA&gt;          NA         NA
+## # ... with 5,946 more rows, and 37 more variables: EQ_MAG_MW &lt;dbl&gt;,
+## #   EQ_MAG_MS &lt;dbl&gt;, EQ_MAG_MB &lt;chr&gt;, EQ_MAG_ML &lt;dbl&gt;, EQ_MAG_MFA &lt;chr&gt;,
+## #   EQ_MAG_UNK &lt;dbl&gt;, INTENSITY &lt;int&gt;, COUNTRY &lt;chr&gt;, STATE &lt;chr&gt;,
+## #   LOCATION_NAME &lt;chr&gt;, LATITUDE &lt;dbl&gt;, LONGITUDE &lt;dbl&gt;,
+## #   REGION_CODE &lt;int&gt;, DEATHS &lt;int&gt;, DEATHS_DESCRIPTION &lt;int&gt;,
+## #   MISSING &lt;chr&gt;, MISSING_DESCRIPTION &lt;int&gt;, INJURIES &lt;int&gt;,
+## #   INJURIES_DESCRIPTION &lt;int&gt;, DAMAGE_MILLIONS_DOLLARS &lt;chr&gt;,
+## #   DAMAGE_DESCRIPTION &lt;int&gt;, HOUSES_DESTROYED &lt;int&gt;,
+## #   HOUSES_DESTROYED_DESCRIPTION &lt;int&gt;, HOUSES_DAMAGED &lt;int&gt;,
+## #   HOUSES_DAMAGED_DESCRIPTION &lt;int&gt;, TOTAL_DEATHS &lt;int&gt;,
+## #   TOTAL_DEATHS_DESCRIPTION &lt;int&gt;, TOTAL_MISSING &lt;chr&gt;,
+## #   TOTAL_MISSING_DESCRIPTION &lt;chr&gt;, TOTAL_INJURIES &lt;int&gt;,
+## #   TOTAL_INJURIES_DESCRIPTION &lt;int&gt;, TOTAL_DAMAGE_MILLIONS_DOLLARS &lt;chr&gt;,
+## #   TOTAL_DAMAGE_DESCRIPTION &lt;int&gt;, TOTAL_HOUSES_DESTROYED &lt;int&gt;,
+## #   TOTAL_HOUSES_DESTROYED_DESCRIPTION &lt;int&gt;, TOTAL_HOUSES_DAMAGED &lt;int&gt;,
+## #   TOTAL_HOUSES_DAMAGED_DESCRIPTION &lt;int&gt;</code></pre>
+</div>
+<div id="geom_timeline" class="section level2">
+<h2>geom_timeline</h2>
+<p>This function creates a new geom to create a timeline for a specified data range and plots each earthquake as a point on that timline</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">filter</span>(<span class="kw">eq_location_clean</span>(<span class="kw">eq_clean_data</span>(<span class="st">'../R/signif.txt'</span>)), COUNTRY ==<span class="st"> &quot;GERMANY&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> COUNTRY, <span class="dt">color =</span> DEATHS, <span class="dt">size =</span> EQ_PRIMARY)) +<span class="st"> </span><span class="kw">geom_timeline</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_integer(),
+##   FLAG_TSUNAMI = col_character(),
+##   SECOND = col_character(),
+##   EQ_PRIMARY = col_double(),
+##   EQ_MAG_MW = col_double(),
+##   EQ_MAG_MS = col_double(),
+##   EQ_MAG_MB = col_character(),
+##   EQ_MAG_ML = col_double(),
+##   EQ_MAG_MFA = col_character(),
+##   EQ_MAG_UNK = col_double(),
+##   COUNTRY = col_character(),
+##   STATE = col_character(),
+##   LOCATION_NAME = col_character(),
+##   LATITUDE = col_double(),
+##   LONGITUDE = col_double(),
+##   MISSING = col_character(),
+##   DAMAGE_MILLIONS_DOLLARS = col_character(),
+##   TOTAL_MISSING = col_character(),
+##   TOTAL_MISSING_DESCRIPTION = col_character(),
+##   TOTAL_DAMAGE_MILLIONS_DOLLARS = col_character()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre><code>## Warning: 669 failed to parse.</code></pre>
+<pre><code>## Warning in eval(substitute(expr), envir, enclos): NAs introduced by
+## coercion
+
+## Warning in eval(substitute(expr), envir, enclos): NAs introduced by
+## coercion</code></pre>
+<p><img src="data:image/png;base64,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XGiWLl1qlxJ4K+GXP1HdXD6/PO65ztFAQEOwYujnlStX2ilqpqnPPvtsW4Pt27ebbt26maOPPtrstttudv3P008/bUqWLGkeeughOxWPXQWieeSRR0ylSpXMzz//bDp37mxq1aplvvrqK5v25JNPNkOGDDFvvPGGvaZwCOrRRx81p59+uv183nnnmTZt2tj3+pX93nvvGabqmzdvbknozz//NM2aNTPU85NPPjFPPvlk2nUbPHiwYf2T3ztthdL8oyFYmoBlWHIZoYu4Q1jbwz9v/JqgV155xRx11FGmT58+tkakQUs44IADzJw5c8wLL7xgiem5554zzzzzjOnbt6+ZMGGCadSokbn++uutxgOxfP3117u0iLzXXHONOe2000yTJk3MbbfdZgkIDcyv7Icfftjcfffdpl69epZ0IDQIc6+99rLEhJZVu3Zt3/zeulGhrl27mkWLFply5cr55tml4rqR8whoCFbEXbzPPvuYUaNG2Vki72rot99+26C9MMxBY+nYsaNdAf3ll1/aM1oR0qBBA6uB8Pnzzz+313xGQ6lZs6Zp2rQpl3mkfPnyhvLRXiCBMmXK2Od+ZbPqed26dbEV2P/85z/tbNz69ettPoZzaF9++UnkrRvXrt5BeUgniRYC0oCKuL8Z0jjxTkBu3rzZPPvss+awww6ztpxhw4ZZomI7hldbQiP69ttvbREbN260GhIXDNWOO+44SxyufHe+8sorTZcuXcxrr71mh0BPPPGEfeRXNlpUqVKlbFoSovWULl3afPfdd4bhI+TE0BFtLpW6UQb1Jh/19MtDOkm0EBABZUh/o8Fg47nhhhtsjW655RYze/Zsu2+MZ07QTtCikN13391qPomeuXucGTp16NDBtG7d2ixYsMDaml588UXf/PHlUgbvXbx4sXnzzTcNthy2ZcSnS6VuQXl4jyRaCGgIliH9zbCIIZSTGjVq2KEWGhGahxM+H3744fby0EMP3eUZwy2vMJPFccEFF5g99tjDsLiRdy1btsxqW4nKPuSQQ+w+MWaxnKC9QIgYwCtXrmxv56duQXncu3SODgIioAzp61NPPdXOXLFD/bfffrPT8eyCP/74481HH31k1q5da7WQKVOmmBNOOMHWGjJ59dVXzS+//GJJhhmyY489Nk+LIKmKFStagzYPGLZ9//33dubMr2yICuM2hnGEWSu0sBEjRhjvDne//OTxq1tQHvJJooWAhmAZ0t/nnnuu1XjYIoHmgUH6zDPPtLW7+uqrDXacgw8+2GofDKcQnmOwvuSSS+wMWfv27U3VqlXtM++fnj17mtGjR5tt27bZNTzMmmGL4fArmyUBvXv3Ni+99JKd4oeAWrVqFSu2bdu25rrrrvPNH1Q3v3fGCteHyCCgdUAZ1tXMVDHjtffee+epGQsBIaZELjG2bt1q7UJoLkGC+w2My/ESVPYPP/xgDdDxebzXQfn96haUx1t2ss9aB5QMocx+HvyNzey652Tt9t1334TtwpkZRyLZf//9E93e5V4i8iFRUNnMfiWToPx+dQvKk+x9ep47CMgGlDt9qZYIgaxDQASUdV2mCguB3EFABJQ7famWCIGsQ0AElHVdpgoLgdxBQASUO32plgiBrENABJR1XZa4wrjbYMNpqsJiRxYwSoRAcSIgAipO9Avx3WyRYCd9KsJKaFZZr1mzJpXkSiMEQkNABBQatJlbMIsL8TUkEQLFjYAIqLh7IJ/vxz0rLjYuvPBC67Ewvhj2jOEt8YwzzrBBAtkzhrAaGmdmCI7JcCyGbNmyxV63aNHCXH755dZ9q32gP0IgRAS0EjpEcMMqGr8+uNZgT1jDhg0t0TgfQbwTX0J4Vrz55putB0Q2lbZs2dLaiBh64eUQj4V16tSxHgohJXwJ4bOHPWfYktj3NXLkSEtGYbWjMMotueceZu6I6wqjKJVRHAgQlkeSXQjsdN2644477ohVeqeXwR0794Ht2OkL2t7b6ct5x/Dhw2PPd+672rFzS8WOoUOH2nuk3/ld27FzGGav77nnnh07t2ns2Dk0i+Xh3s6d7zt27s6P3dMHIVDYCEgDKg7WL8A70VZWrFhhHcy7YtgBj/8gJzvJyeDtcNKkSYboG0SywIWq36wXGg++mgcNGuSKMLhf3bRpk/VieMQRR8Tu64MQKEwEZAMqTDSLoCx2l+MzCO+DXvFuVMWhPKQEoeBetV27djE/0N487jOzYmyCZRe+OyAdbEXOF7VLq7MQKEwEpAEVJppFUBaaCgdG6CZNmtg34k/6gw8+sJ/RdLD9PPDAAwY/QAi+fDAsQ1yIc4a/U52219WrV7flEQXDEc4XX3xhfQ3hwVAiBMJCQBpQWMiGWG6nTp3M+PHjzaxZs6x3w/79+8eCBeITCJeqeD6EcPAv1KtXL+tLyA3BcGyGLFmyxBDhgpA5uFxl6IY2xPDt0ksvNVOnTrUO6UNsioqOOAIioCz8AgwcONAGCWSmCv/QkAdhbxCGYvfdd58hfhi+n9GWcGKGt0SCDSLMdjHdDsnceeed1u0rscYef/xxWx7BEStUqGD9P9sM+iMEQkJAHhFDArYoikWjwc0qfp8TCcQEAfl5SsSehO2HSBVOMD4z7CIUj0QIhI2ACChshFW+EBACvghoCOYLjR4IASEQNgIioLARVvlCQAj4IiAC8oVGD4SAEAgbARFQ2AirfCEgBHwREAH5QqMHQkAIhI3A/wM8fcS1TWGcMgAAAABJRU5ErkJggg==" /><!-- --></p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

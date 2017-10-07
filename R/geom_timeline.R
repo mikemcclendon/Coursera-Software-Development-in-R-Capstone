@@ -3,6 +3,25 @@ library(dplyr)
 library(grid)
 library(scales)
 
+#' Geom for creating a timeline from earthquake data
+#'
+#' This function creates a new geom to create a timeline for a specified data range
+#' and plots each earthquake as a point on that timline
+#'
+#' @param mapping a set of aesthetic mappings
+#' @param data data to be displayed
+#' @param na.rm specifies how default missing values are approached
+#' @param position position adjustment
+#' @param stat the statistical transformation of the data
+#' @param show.legend inclusion of layer in the legend
+#' @param inherit.aes logical specification of whether to inherit the default aes
+#'
+#' @return no return value
+#'
+#' @examples \dontrun{ggplot(data = china2, aes(x = date, y = COUNTRY,
+#' color = DEATHS, size = EQ_PRIMARY)) + geom_timeline(alpha = 0.2)}
+#' @export
+
 geom_timeline <- function(mapping = NULL, data = NULL, na.rm = TRUE,
                           position = "identity", stat = "identity",
                           show.legend = NA, inherit.aes = TRUE, ...) {
@@ -34,7 +53,6 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                                      gp = gpar(
                                        col = scales::alpha(coords$colour, coords$alpha),
                                        fill = scales::alpha(coords$fill, coords$alpha),
-                                       # Stroke is added around the outside of the point
                                        fontsize = coords$size * ggplot2::.pt + coords$stroke * ggplot2::.stroke / 2,
                                        lwd = coords$stroke * ggplot2::.stroke / 2
                                      )
