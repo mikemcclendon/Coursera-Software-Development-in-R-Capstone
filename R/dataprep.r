@@ -21,6 +21,7 @@ dirty <- 'signif.txt'
 #' @examples \dontrun{eq_clean_data(dirty)}
 #'
 #' @export
+
 eq_clean_data <- function(x) {
   data <- read_tsv(x, col_names = TRUE, col_types = NULL) %>%
     unite(date, 'YEAR', 'MONTH', 'DAY') %>%
