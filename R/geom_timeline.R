@@ -35,8 +35,14 @@ geom_timeline <- function(mapping = NULL, data = NULL, na.rm = TRUE,
     inherit.aes = inherit.aes,
     params = list(na.rm = na.rm, ...))
 }
-
-
+#'ggproto timeline object
+#'
+#'
+#' @return no return value
+#'
+#' @examples \dontrun{ggplot(data = china2, aes(x = date, y = COUNTRY,
+#' color = DEATHS, size = EQ_PRIMARY)) + geom_timeline(alpha = 0.2)}
+#' @export
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                                  required_aes = c("x"),
                                  non_missing_aes = c("size", "shape", "colour","y"),

@@ -23,11 +23,14 @@ dirty <- 'signif.txt'
 #' @export
 
 eq_clean_data <- function(x) {
-  data <- read_tsv(x, col_names = TRUE, col_types = NULL) %>%
-    unite(date, 'YEAR', 'MONTH', 'DAY') %>%
-    mutate(date = ymd(date)) %>%
-    mutate(LATITUDE = as.numeric('LATITUDE')) %>%
-    mutate(LONGITUDE = as.numeric('LONGITUDE'))
+  date <- NULL
+  LATITUDE <- NULL
+  LONGITUDE <- NULL
+  data <- readr::read_tsv(x, col_names = TRUE, col_types = NULL) %>%
+    tidyr::unite(date, 'YEAR', 'MONTH', 'DAY') %>%
+    dplyr::mutate(date = lubridate::ymd(date)) %>%
+    dplyr::mutate(LATITUDE = as.numeric('LATITUDE')) %>%
+    dplyr::mutate(LONGITUDE = as.numeric('LONGITUDE'))
   return(data)
 }
 
@@ -41,7 +44,7 @@ eq_clean_data <- function(x) {
 #' @examples \dontrun{eq_loc_helper("wo:rd")}
 #' @export
 eq_loc_helper <- function(x) {
-  gsub(".*:", "", x)
+  base::gsub(".*:", "", x)
 }
 
 #' Function to clean the LOCATION_NAME field in the NOAA
@@ -55,9 +58,10 @@ eq_loc_helper <- function(x) {
 #' @export
 
 eq_location_clean <- function(x) {
+  LOCATION_NAME <- NULL
   data <- x %>%
-  mutate(LOCATION_NAME = eq_loc_helper(LOCATION_NAME)) %>%
-    mutate(LOCATION_NAME = tolower(LOCATION_NAME)) %>%
-    mutate(LOCATION_NAME = toTitleCase(LOCATION_NAME))
+  dplyr::mutate(LOCATION_NAME = eq_loc_helper(LOCATION_NAME)) %>%
+    dplyr::mutate(LOCATION_NAME = tools::tolower(LOCATION_NAME)) %>%
+    dplyr::mutate(LOCATION_NAME = tools::toTitleCase(LOCATION_NAME))
   return(data)
   }
