@@ -5,7 +5,7 @@ Version: 0.0
 License: GPL (>= 2)
 Author: Mike McClendon <mm@example.com>
 Maintainer: Mike McClendon <mm@example.com>
-Suggests: knitr,
-    rmarkdown
+Suggests: knitr, rmarkdown
+Imports: dplyr, tidyr, grid, ggplot2, magrittr, lubridate,readr
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
