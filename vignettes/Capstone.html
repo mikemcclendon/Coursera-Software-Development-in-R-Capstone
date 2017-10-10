@@ -73,7 +73,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<p>This package is intended to read in and visualize data from the U.S. National Oceanographic and Atmospheric Administration (NOAA) dataset on significant earthquakes around the world <a href="https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&amp;s=1&amp;d=1" class="uri">https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&amp;s=1&amp;d=1</a>. Below are the four functions this package exports.</p>
+<p>This package is intended to read in and visualize data from the U.S. National Oceanographic and Atmospheric Administration (NOAA) dataset on significant earthquakes around the world <a href="https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&amp;s=1&amp;d=1" class="uri">https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&amp;s=1&amp;d=1</a>.</p>
+<p>The below five functions should be used in succession to generate visualizations of the earthquake data. eq_clean_data should be used in conjunction with eq_location_clean to provide a clean data set. The subsequent data should then be visualized in a timeline geom using geom_timeline. Below are the five functions this package exports.</p>
 <div id="eq_clean_data" class="section level2">
 <h2>eq_clean_data</h2>
 <p>This function cleans the raw NOAA data setting the various fields to the appropriate data types</p>
@@ -211,7 +212,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="geom_timeline" class="section level2">
 <h2>geom_timeline</h2>
 <p>This function creates a new geom to create a timeline for a specified data range and plots each earthquake as a point on that timline</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">filter</span>(<span class="kw">eq_location_clean</span>(<span class="kw">eq_clean_data</span>(<span class="st">'../R/signif.txt'</span>)), COUNTRY ==<span class="st"> &quot;GERMANY&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> COUNTRY, <span class="dt">color =</span> DEATHS, <span class="dt">size =</span> EQ_PRIMARY)) +<span class="st"> </span><span class="kw">geom_timeline</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ggplot2::<span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">filter</span>(<span class="kw">eq_location_clean</span>(<span class="kw">eq_clean_data</span>(<span class="st">'../R/signif.txt'</span>)), COUNTRY ==<span class="st"> &quot;GERMANY&quot;</span>), ggplot2::<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> COUNTRY, <span class="dt">color =</span> DEATHS, <span class="dt">size =</span> EQ_PRIMARY)) +<span class="st"> </span><span class="kw">geom_timeline</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>)</code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   .default = col_integer(),

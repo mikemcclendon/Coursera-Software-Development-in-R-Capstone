@@ -61,7 +61,7 @@ eq_location_clean <- function(x) {
   LOCATION_NAME <- NULL
   data <- x %>%
   dplyr::mutate(LOCATION_NAME = eq_loc_helper(LOCATION_NAME)) %>%
-    dplyr::mutate(LOCATION_NAME = tools::tolower(LOCATION_NAME)) %>%
+    dplyr::mutate(LOCATION_NAME = base::tolower(LOCATION_NAME)) %>%
     dplyr::mutate(LOCATION_NAME = tools::toTitleCase(LOCATION_NAME))
   return(data)
   }

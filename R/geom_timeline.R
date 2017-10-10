@@ -15,6 +15,7 @@ library(scales)
 #' @param stat the statistical transformation of the data
 #' @param show.legend inclusion of layer in the legend
 #' @param inherit.aes logical specification of whether to inherit the default aes
+#' @param ... additional parameters
 #'
 #' @return no return value
 #'
@@ -56,7 +57,7 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                                    points = grid::pointsGrob(
                                      coords$x, coords$y,
                                      pch = coords$shape,
-                                     gp = gpar(
+                                     gp = grid::gpar(
                                        col = scales::alpha(coords$colour, coords$alpha),
                                        fill = scales::alpha(coords$fill, coords$alpha),
                                        fontsize = coords$size * ggplot2::.pt + coords$stroke * ggplot2::.stroke / 2,
@@ -65,7 +66,7 @@ GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::Geom,
                                    )
                                    lines = lapply(unique(coords$y), FUN = function(x) grid::linesGrob(y = c(x,x)))
                                    grobList = c(list(points), lines)
-                                   grid::gTree(children = do.call(gList, grobList))
+                                   grid::gTree(children = do.call(grid::gList, grobList))
                                  },
                                  draw_key = ggplot2::draw_key_point
 )

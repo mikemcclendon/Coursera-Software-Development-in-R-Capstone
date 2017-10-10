@@ -2,6 +2,7 @@ export("eq_clean_data")
 export("eq_loc_helper")
 export("eq_location_clean")
 export("geom_timeline")
+export("eq_map")
 
 import(dplyr)
 import(ggplot2)

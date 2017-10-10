@@ -22,6 +22,8 @@ geom_timeline(mapping = NULL, data = NULL, na.rm = TRUE,
 \item{show.legend}{inclusion of layer in the legend}
 
 \item{inherit.aes}{logical specification of whether to inherit the default aes}
+
+\item{...}{additional parameters}
 }
 \value{
 no return value
