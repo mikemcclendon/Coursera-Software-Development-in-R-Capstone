@@ -2,10 +2,10 @@ Package: Capstone
 Title: NOAA Significant Earthquake Visualizations
 Description: A package to visualize earthquakes from the NOAA dataset.
 Version: 0.0
-License: GPL-2
+License: GPL-3 | file LICENSE
 Author: Mike McClendon <mm@example.com>
 Maintainer: Mike McClendon <mm@example.com>
 Suggests: knitr, rmarkdown, testthat
-Imports: dplyr, tidyr, grid, ggplot2, magrittr, lubridate, readr, tools, grid
+Imports: dplyr, tidyr, grid, ggplot2, magrittr, lubridate, readr, tools
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
